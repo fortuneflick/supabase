@@ -1139,6 +1139,27 @@ export interface DocsContentListingClickedEvent {
 }
 
 /**
+ * User copied a docs code block with its copy button, and the clipboard write succeeded.
+ *
+ * @group Events
+ * @source docs
+ */
+export interface DocsCodeCopiedEvent {
+  action: 'docs_code_copied'
+  properties: {
+    /**
+     * Language of the code block, such as `bash` or `ts`.
+     */
+    lang?: string
+    /**
+     * Identifier that a page gives a code block it measures, such as
+     * `getting-started-install`.
+     */
+    copyId?: string
+  }
+}
+
+/**
  * User picked an option in the getting started stepper: how to start, a framework, or a
  * feature for the agent prompt.
  *
@@ -4415,6 +4436,7 @@ export type TelemetryEvent =
   | AskAiClickedEvent
   | DocsAiPromptCopiedEvent
   | DocsContentListingClickedEvent
+  | DocsCodeCopiedEvent
   | DocsGettingStartedOptionClickedEvent
   | DocsSearchV2OpenedEvent
   | DocsSearchV2SearchSubmittedEvent
